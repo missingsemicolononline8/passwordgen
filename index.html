@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="h-full w-full bg-blue-600 flex items-center justify-center">
+        <div class="generator-wrapper rounded-md bg-white w-1/2 md:w-fit">
+            <h1 class="pt-3 pl-8 pb-3 text-lg font-semibold  border-b-2">
+                Password Generator
+            </h1>
+            <form class="py-5 pb-10 px-8">
+                <div class="form-group relative mb-7">
+                    <input type="text" id="password" readonly class="w-full p-2 outline-none border-2 mb-2">
+                    <div onclick="copyPassword()">
+                        <button title="copy"  class="peer ri-file-copy-line absolute top-2 right-3 text-slate-400 hover:text-black cursor-pointer" ></button>
+                        <i title="copied" class="hidden peer-focus:block z-10 bg-white ri-check-line absolute top-2 right-3 text-slate-400 hover:text-black cursor-pointer"></i>
+                    </div>
+                    <div class="bg-slate-300 h-1 rounded-full overflow-hidden">
+                        <div id="password-strength" 
+                            class="h-full progress-bar transition-all duration-300" 
+                            aria-valuenow="40" 
+                            aria-valuemin="0" 
+                            aria-valuemax="100" 
+                            style="width:0%">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-5">
+                    <div class="label flex justify-between align-middle">
+                        <label for="password_length">Password Length</label>
+                        <span id="password_length">5</span>
+                    </div>
+                    <input class="mt-2 w-full range" min="1" max="30" step="1" value="5" type="range" name="password_length" />
+                </div>
+                <div class="form-group mb-5">
+                    <div class="label">
+                        <label for="password_length">Password Settings</label>
+                    </div>
+                    <ul class="settings grid md:grid-cols-2 mt-4">
+                        <li class="mb-2 flex items-center gap-2 mr-3"><input type="checkbox" checked="checked" value="lowercase" id="lowercase" class="option">
+                            <label class="cursor-pointer" for="lowercase">Lowercase (a-z)</label>
+                        </li>
+                        <li class="mb-2 flex items-center gap-2 mr-3"><input type="checkbox" value="uppercase" id="uppercase" class="option">
+                            <label class="cursor-pointer" for="uppercase">Uppercase (A-Z)</label>
+                        </li>
+                        <li class="mb-2 flex items-center gap-2 mr-3"><input type="checkbox" value="numbers" id="numbers" class="option">
+                            <label class="cursor-pointer" for="numbers">Numbers (0-9)</label>
+                        </li>
+                        <li class="mb-2 flex items-center gap-2 mr-3"><input type="checkbox" value="symbols" id="symbols" class="option">
+                            <label class="cursor-pointer" for="symbols">Symbols (~!%$*#)</label>
+                        </li>
+                        <li class="mb-2 flex items-center gap-2 mr-3"><input type="checkbox" value="exc-duplicate" id="exc-duplicate" >
+                            <label class="cursor-pointer" for="exc-duplicate">Prevent Duplicate</label>
+                        </li>
+                        <li class="mb-2 flex items-center gap-2 mr-3"><input type="checkbox" value="spaces" id="spaces" class="option">
+                            <label class="cursor-pointer" for="spaces">Include Spaces</label>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <button class="bg-blue-600 text-white text-base py-2 px-3 text-center uppercase w-full hover:bg-blue-500 active:scale-95 transition-all" id="generatePassword">Generate Password</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script type="module" src="./src/script.js"></script>
+</body>
+
+</html>
